@@ -21,6 +21,6 @@
 * **Response** 
   * sucess: Boolean
 
-### Authentication
+## Authentication
 * Once sucessful login, must pass jwtToken when attempting to access protected requests
 * Usage:  Pass jwtToken as request.headers.authorization
