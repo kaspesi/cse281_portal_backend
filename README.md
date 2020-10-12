@@ -14,9 +14,13 @@
 
 ### POST /register
 * **Body**
-  *name:  String
-  *email: String
-  *password:  String
+  * name:  String
+  * email: String
+  * password:  String
   
 * **Response** 
-  *sucess: Boolean
+  * sucess: Boolean
+
+### Authentication
+* Once sucessful login, must pass jwtToken when attempting to access protected requests
+* Usage:  Pass jwtToken as request.headers.authorization
