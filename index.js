@@ -3,9 +3,11 @@ var app = express();
 const cors = require('cors');
 const client = require('./database/client');
 const auth = require("./middleware/auth");
-const tf = require('@tensorflow/tfjs-node');
+//const tf = require('@tensorflow/tfjs-node');
 const registerRouter = require('./routers/registerRouter');
 const loginRouter = require('./routers/loginRouter');
+const investigateRouter = require('./routers/investigateRouter');
+const uploadRouter = require('./routers/uploadRouter');
 
 //locate.test("YOOOO", "MANNNN");
 
@@ -23,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
+app.use('/investigate', investigateRouter);
+app.use('/upload', uploadRouter); //Uploads model https://www.tensorflow.org/js/guide/save_load
 
 app.listen(PORT, () => {
 	console.log('Server running on port ' + PORT);
