@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/register', registerRouter);
+app.use('/register', registerRouter)
 app.use('/login', loginRouter);
 app.use('/investigate', investigateRouter);
 app.use('/upload', uploadRouter); //Uploads model https://www.tensorflow.org/js/guide/save_load
