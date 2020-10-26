@@ -4,10 +4,14 @@
 ## Routes:
 
 ### POST /login
+*** 
 #### /admin
  * **Body**: 
    * email: String
    * password:  String
+ * **Response**:  
+  * sucess: Boolean
+  * jwtToken:  Authentication
 #### /investigator
  * **Body**: 
    * email: String
@@ -17,11 +21,14 @@
   * jwtToken:  Authentication
 
 ### POST /register
+*** 
 #### /admin
 * **Body**
   * name:  String
   * email: String
   * password:  String
+* **Response** 
+  * sucess: Boolean
   
 #### /investigator
   * **Body**
