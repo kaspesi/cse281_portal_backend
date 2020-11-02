@@ -49,6 +49,17 @@
 * **Response** 
   * results:  Array of model results of size photos 
 
+
+***
+ ### POST /config/url
+ Updates config model url key in database
+*** 
+* **Body**
+  * url:  String
+* **Response** 
+  * sucess:  Boolean
+  
+  
 ## Authentication
 * Once sucessful login, must pass jwtToken when attempting to access protected requests
 * Usage:  Pass jwtToken as request.headers.authorization
