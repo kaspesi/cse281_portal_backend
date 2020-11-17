@@ -7,9 +7,8 @@ const auth = require("./middleware/auth");
 const registerRouter = require('./routers/registerRouter');
 const loginRouter = require('./routers/loginRouter');
 const investigateRouter = require('./routers/investigateRouter');
-const uploadRouter = require('./routers/uploadRouter');
+const configRouter = require('./routers/configRouter');
 
-//locate.test("YOOOO", "MANNNN");
 
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -26,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/register', registerRouter)
 app.use('/login', loginRouter);
 app.use('/investigate', investigateRouter);
-app.use('/upload', uploadRouter); //Uploads model https://www.tensorflow.org/js/guide/save_load
+app.use('/config', configRouter); //Uploads model https://www.tensorflow.org/js/guide/save_load
 
 app.listen(PORT, () => {
 	console.log('Server running on port ' + PORT);
