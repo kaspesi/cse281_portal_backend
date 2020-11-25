@@ -47,12 +47,12 @@
 * **Body**
   * photos:  Array of up to 12 images
 * **Response** 
-  * results:  Array of model results of size photos 
+  * results:  Array of predicted hotel_ids  
 
 
 ***
  ### POST /config/url
- Updates config model url key in database
+ Updates AWS API-gateway url
 *** 
 * **Body**
   * url:  String
