@@ -3,10 +3,10 @@ require('dotenv').config();
 
 
 const client = new Client({
-	user: 'nrbloanjmxkvvt',
-	host: 'ec2-54-146-4-66.compute-1.amazonaws.com',
-	database: 'd9ueho8h3lvd2v',
-	password: '5d2e820131c28454e8b997afff24e7c2e6a545d0bb04cb7a8329bec6624df3ac',
+	user: 'igonyfvwvdafir',
+	host: 'ec2-34-192-122-0.compute-1.amazonaws.com',
+	database: 'd3al9v8lhdukc',
+	password: 'ba2c060d39ea7ef7aad3b56cce7584dbab365a8ecf6c4e6e0e59143c5b62ac95',
 	port: 5432,
 	ssl: { rejectUnauthorized: false }
 });
