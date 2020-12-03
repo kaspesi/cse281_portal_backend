@@ -9,8 +9,8 @@ const loginRouter = require('./routers/loginRouter');
 const investigateRouter = require('./routers/investigateRouter');
 const configRouter = require('./routers/configRouter');
 const fs = require('fs')
-const https = require('https')
-const http = require('http')
+// const https = require('https')
+// const http = require('http')
 
 //SSL Parameters
 var privateKey  = fs.readFileSync('enc/private.key', 'utf8');
@@ -24,26 +24,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, 'public')));
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 
 app.use('/register', registerRouter)
 app.use('/login', loginRouter);
 app.use('/investigate', investigateRouter);
 app.use('/config', configRouter); //Uploads model https://www.tensorflow.org/js/guide/save_load
 
-// app.listen(PORT, () => {
-// 	console.log('Server running on port ' + PORT);
+app.listen(PORT, () => {
+	console.log('Server running on port ' + PORT);
+});
+
+// const credentials = {key: privateKey, cert: certificate};
+// // http.createServer(app).listen(80)
+// https.createServer(credentials, app).listen(process.env.PORT)
+
+// app.get('/', auth, function(req, res, next) {
+// 	res.render('index', { title: 'Front Page' });
 // });
 
-const credentials = {key: privateKey, cert: certificate};
-// http.createServer(app).listen(80)
-https.createServer(credentials, app).listen(process.env.PORT)
-
-app.get('/', auth, function(req, res, next) {
-	res.render('index', { title: 'Front Page' });
-});
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
 
 //Connect DB
 client.connect();
