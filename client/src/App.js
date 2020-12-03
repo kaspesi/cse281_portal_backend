@@ -8,8 +8,6 @@ import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
 import "./App.css";
 
-import BrowserRouter from "react-router-dom";
-
 const particlesOptions = {
   particles: {
     line_linked: {
@@ -44,7 +42,6 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter.Router>
       <div className="App">
         <Particles className="particles" params={{ particlesOptions }} />
         <Navigation
@@ -64,7 +61,6 @@ class App extends Component {
           <Register onRouteChange={this.onRouteChange} />
         )}
       </div>
-      </BrowserRouter.Router>
     );
   }
 }

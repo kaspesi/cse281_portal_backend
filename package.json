@@ -32,7 +32,8 @@
     "pg": "^8.4.0",
     "pug": "^3.0.0",
     "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "request-promise": "^4.2.6",
+    "webpack-cli": "^4.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
