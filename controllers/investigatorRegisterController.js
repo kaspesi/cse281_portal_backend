@@ -6,7 +6,7 @@ const postInvestigatorRegister = async (request, response) => {
 	console.log('request body', name, email, password);
 	try {
 
-		const feedback = await client.query('select * from investigator where investigator.email = $1', [ email ]);
+		const feedback = await client.query('select * from investigator where investigator.email = $1', [ email.toLowerCase() ]);
 		console.log(feedback.rows);
 
 		if (feedback.rows.length) {
@@ -21,7 +21,7 @@ const postInvestigatorRegister = async (request, response) => {
 	console.log(hashedPassword+ " " + name);
 
 	try {
-		await client.query('insert into investigator(name, email, password) values($1, $2, $3)', [name, email, hashedPassword]);
+		await client.query('insert into investigator(name, email, password) values($1, $2, $3)', [name, email.toLowerCase(), hashedPassword]);
 	} catch (error) {
 		return response.json({ success: false, errorMessage: error});
 	}

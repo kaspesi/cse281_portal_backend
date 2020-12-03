@@ -6,7 +6,7 @@ const client = require('../database/client');
 const postInvestigatorLogin = async (request, response) => {
 	const { email, password } = request.body;
 
-	const feedback = await client.query('select * from investigator where investigator.email = $1', [ email ]);
+	const feedback = await client.query('select * from investigator where investigator.email = $1', [ email.toLowerCase() ]);
 
 	if (!feedback.rows.length) {
 		return response.json({ success: false, errorMessage: '404: email not found' });
