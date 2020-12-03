@@ -38,8 +38,8 @@ app.use('/config', configRouter); //Uploads model https://www.tensorflow.org/js/
 // });
 
 const credentials = {key: privateKey, cert: certificate};
-http.createServer(app).listen(80)
-https.createServer(credentials, app).listen(433)
+// http.createServer(app).listen(80)
+https.createServer(credentials, app).listen(process.env.PORT)
 
 app.get('/', auth, function(req, res, next) {
 	res.render('index', { title: 'Front Page' });
