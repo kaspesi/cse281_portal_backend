@@ -6,8 +6,9 @@ import Register from "./components/Register/Register";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
+import Map from "./components/Map/Map";
 import "./App.css";
-// import axios from 'axios';
+import hotelName from "./components/hotelName/hotelName";
 
 const particlesOptions = {
   particles: {
@@ -24,20 +25,30 @@ const particlesOptions = {
 };
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       route: "signin",
       isSignedIn: false,
+      map: null,
+      markers: [],
+      hotel: [],
     };
   }
 
-  //implementing the mount
-  componentDidMount() {
-    fetch("/")
-    .then(response => response.json())
-    .then(console.log("mounted"))
-  }
+  componentDidMount() {}
+
+  setMapRef = (mapRef) => {
+    this.setState({ map: mapRef });
+  };
+
+  setMarkers = (marker) => {
+    this.setState({ markers: [marker] });
+  };
+
+  setName = (hotel_name) => {
+    this.setState({ hotel: hotel_name });
+  };
 
   onRouteChange = (route) => {
     if (route === "signout") {
@@ -60,10 +71,12 @@ class App extends Component {
           <div>
             <Logo />
             <Rank />
-            <ImageLinkForm />
+            <ImageLinkForm map={this.state.map} setMarkers={this.setMarkers} />
+            <Map setMapRef={this.setMapRef} markers={this.state.markers} />
+
             {/* {/} */}
           </div>
-        ) : this.state.route === "signin" ? (
+        ) : this.state.route === "signin" || this.state.route === "signout" ? (
           <Signin onRouteChange={this.onRouteChange} />
         ) : (
           <Register onRouteChange={this.onRouteChange} />

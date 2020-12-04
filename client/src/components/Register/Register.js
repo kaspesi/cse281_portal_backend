@@ -5,13 +5,13 @@ const Register = ({ onRouteChange }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const url = "https://cse-backend.herokuapp.com";
   const onSubmit = (event) => {
     // fetch to post the new user's data to the backend register route
-    fetch("/register", {
+    fetch(`${url}/register/investigator`, {
       method: "POST",
       headers: {
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: name,
@@ -19,7 +19,12 @@ const Register = ({ onRouteChange }) => {
         email: email,
       }),
     }).then((resp) => {
-      console.log(resp);
+      // if resp.ok then switch to login for user to login
+      if (resp.ok) {
+        onRouteChange("signin");
+      } else {
+        console.log(resp);
+      }
     });
   };
 
