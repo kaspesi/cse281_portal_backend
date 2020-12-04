@@ -27,15 +27,15 @@ app.use(cors());
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'pug');
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 
 app.use('/register', registerRouter)
 app.use('/login', loginRouter);
 app.use('/investigate', investigateRouter);
 app.use('/config', configRouter); //Uploads model https://www.tensorflow.org/js/guide/save_load
 
-
+app.listen(PORT, () => {
+	console.log('Server running on port ' + PORT);
+});
 
 // const credentials = {key: privateKey, cert: certificate};
 // // http.createServer(app).listen(80)
@@ -45,13 +45,9 @@ app.use('/config', configRouter); //Uploads model https://www.tensorflow.org/js/
 // 	res.render('index', { title: 'Front Page' });
 // });
 
-app.get('*', (req,res) =>{
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
-
-app.listen(PORT, () => {
-	console.log('Server running on port ' + PORT);
-});
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
 
 //Connect DB
 client.connect();
