@@ -7,6 +7,7 @@ import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
 import "./App.css";
+// import axios from 'axios';
 
 const particlesOptions = {
   particles: {
@@ -31,6 +32,13 @@ class App extends Component {
     };
   }
 
+  //implementing the mount
+  componentDidMount() {
+    fetch("http://localhost:3000")
+    .then(response => response.json())
+    .then(console.log("mounted"))
+  }
+
   onRouteChange = (route) => {
     if (route === "signout") {
       this.setState({ isSignedIn: false });
@@ -53,7 +61,7 @@ class App extends Component {
             <Logo />
             <Rank />
             <ImageLinkForm />
-            {/*<FaceRecognition />*/}
+            {/* {/} */}
           </div>
         ) : this.state.route === "signin" ? (
           <Signin onRouteChange={this.onRouteChange} />

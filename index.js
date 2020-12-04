@@ -35,9 +35,7 @@ app.use('/login', loginRouter);
 app.use('/investigate', investigateRouter);
 app.use('/config', configRouter); //Uploads model https://www.tensorflow.org/js/guide/save_load
 
-app.listen(PORT, () => {
-	console.log('Server running on port ' + PORT);
-});
+
 
 // const credentials = {key: privateKey, cert: certificate};
 // // http.createServer(app).listen(80)
@@ -47,13 +45,13 @@ app.listen(PORT, () => {
 // 	res.render('index', { title: 'Front Page' });
 // });
 
-app.use((req, res, next) => {
-	res.sendFile(path.join(__dirname+'/client/build/index.html'));
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname+'/client/build/index.html'));
-  });
+app.listen(PORT, () => {
+	console.log('Server running on port ' + PORT);
+});
 
 //Connect DB
 client.connect();

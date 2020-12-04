@@ -1,6 +1,28 @@
 import React from "react";
+import { useState } from "react";
 
 const Register = ({ onRouteChange }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSubmit = (event) => {
+    // fetch to post the new user's data to the backend register route
+    fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "aplication/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        password: password,
+        email: email,
+      }),
+    }).then((resp) => {
+      console.log(resp);
+    });
+  };
+
   return (
     <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
@@ -12,10 +34,12 @@ const Register = ({ onRouteChange }) => {
                 Name
               </label>
               <input
+                onChange={(event) => setName(event.target.value)}
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="text"
                 name="name"
                 id="name"
+                value={name}
               />
             </div>
             <div className="mt3">
@@ -23,10 +47,12 @@ const Register = ({ onRouteChange }) => {
                 Email
               </label>
               <input
+                onChange={(event) => setEmail(event.target.value)}
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="email"
                 name="email-address"
                 id="email-address"
+                value={email}
               />
             </div>
             <div className="mv3">
@@ -34,6 +60,8 @@ const Register = ({ onRouteChange }) => {
                 Password
               </label>
               <input
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="password"
                 name="password"
@@ -43,7 +71,7 @@ const Register = ({ onRouteChange }) => {
           </fieldset>
           <div className="">
             <input
-              onClick={() => onRouteChange("home")}
+              onClick={onSubmit}
               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
               type="submit"
               value="Register"
