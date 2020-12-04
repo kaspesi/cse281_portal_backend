@@ -39,7 +39,7 @@ const ImageLinkForm = (props) => {
     //const url = "https://cse-backend.herokuapp.com";
     axios({
       method: "POST",
-      url: "https://cse-backend.herokuapp.com/investigate",
+      url: "/investigate",
       data: formData,
       headers: headers,
     }).then((resp) => {
