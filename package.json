@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/kaspesi/cse281/issues"
   },
-  "homepage": "https://github.com/kaspesi/cse281#readme",
+  "homepage": ".",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
