@@ -34,7 +34,7 @@ class App extends Component {
 
   //implementing the mount
   componentDidMount() {
-    fetch("http://localhost:3000")
+    fetch("/")
     .then(response => response.json())
     .then(console.log("mounted"))
   }
