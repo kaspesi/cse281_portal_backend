@@ -47,9 +47,13 @@ app.listen(PORT, () => {
 // 	res.render('index', { title: 'Front Page' });
 // });
 
-app.get('*', (req, res) => {
+app.use((req, res, next) => {
 	res.sendFile(path.join(__dirname+'/client/build/index.html'));
-  });
+});
+
+// app.get('*', (req, res) => {
+// 	res.sendFile(path.join(__dirname+'/client/build/index.html'));
+//   });
 
 //Connect DB
 client.connect();
