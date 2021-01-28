@@ -18,11 +18,8 @@
   },
   "homepage": ".",
   "dependencies": {
-    "apos-to-lex-form": "^1.0.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "cheerio": "^1.0.0-rc.5",
-    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "csv-parser": "^2.3.3",
     "dotenv": "^8.2.0",
@@ -32,16 +29,10 @@
     "https": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
-    "natural": "^2.4.5",
-    "nlcst-to-string": "^2.0.4",
-    "pg": "^8.5.1",
+    "pg": "^8.4.0",
     "pug": "^3.0.0",
     "request": "^2.88.2",
-    "request-promise": "^4.2.6",
-    "retext": "^7.0.1",
-    "retext-keywords": "^6.0.0",
-    "retext-pos": "^3.0.0",
-    "stopword": "^1.0.6"
+    "request-promise": "^4.2.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
